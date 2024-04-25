@@ -47,7 +47,7 @@ function App() {
       {users
         .filter((x) => {
           if (find === "") {
-            return x;
+            return "";
           } else if (x.name.toLowerCase().includes(find.toLowerCase())) {
             return x.name;
           }
