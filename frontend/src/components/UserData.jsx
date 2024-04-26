@@ -1,5 +1,5 @@
 const UserData = ({ users }) => {
-  if (users.length === 0) return <h2>No data found</h2>;
+  if (users.length === 0) return <h2>No data found. Please try with name.</h2>;
   return (
     <>
       <table>
