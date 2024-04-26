@@ -1,1 +1,1 @@
-### basic project which consist of concept of fetching data from an API, sending it to frontend and then applying the concept of filteration and debouncing.
+### Simple project which consists of the concept of fetching data from an API, sending it to front end from the backend and then applying the concept of filtration and debouncing.
