@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import UserData from "./components/UserData";
 
 function App() {
   let API = "http://localhost:8000/api";
@@ -41,49 +42,18 @@ function App() {
   const debounced = debounce(handleChange, 800);
 
   if (loading) return <h1>Loading...</h1>;
+
   return (
     <>
-      <input type="text" placeholder="enter name" onChange={debounced} />
-      {users
-        .filter((x) => {
-          if (find === "") {
-            return "";
-          } else if (x.name.toLowerCase().includes(find.toLowerCase())) {
-            return x.name;
-          }
-        })
-        .map((x) => {
-          return (
-            <tr key={x.id}>
-              <td>{x.id}</td>
-              <td>{x.name}</td>
-              <td>{x.username}</td>
-              <td>{x.email}</td>
-            </tr>
-          );
-        })}
-      <table align="center">
-        <thead>
-          <th>id</th>
-          <th>name</th>
-          <th>username</th>
-          <th>email</th>
-        </thead>
-        <tbody>
-          {!loading &&
-            users.map((user) => {
-              // const { id, name, username, email } = user;
-              return (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+      <input type="text" placeholder="search any name" onChange={debounced} />
+      {find && (
+        <UserData
+          users={users.filter((x) =>
+            x.name.toLowerCase().includes(find.toLowerCase())
+          )}
+        />
+      )}
+      {!find && <UserData users={users} />}
     </>
   );
 }
